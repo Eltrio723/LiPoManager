@@ -12,9 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    BatteryManager batteryManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,22 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        batteryManager = BatteryManager.getInstance();
+        batteryManager.init(this);
+        batteryManager.clear();
+        batteryManager.addBattery(new Battery());
+        batteryManager.addBattery(new Battery());
+        batteryManager.addBattery(new Battery());
+        batteryManager.addBattery(new Battery());
+
+        ArrayAdapter<Battery> adapter = new BatteryArrayAdapter(this, 0,
+                (ArrayList<Battery>) batteryManager.getBatteries());
+
+        ListView listView = (ListView) findViewById(R.id.ListView_Main);
+        listView.setAdapter(adapter);
+
     }
 
     @Override

@@ -2,8 +2,21 @@
     <string name="app_name">LiPo Manager</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Eltrio723</string>
-    <string name="nav_header_subtitle">https://github.com/Eltrio723</string>
+    <string name="nav_header_title" translatable="false">Eltrio723</string>
+    <string name="nav_header_subtitle" translatable="false">https://github.com/Eltrio723</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="V" translatable="false">V</string>
+    <string name="C" translatable="false">C</string>
+    <string name="S" translatable="false">S</string>
+    <string name="mAh" translatable="false">mAh</string>
+    <string name="Charge">Charge</string>
+    <string name="Use">Use</string>
+    <string name="Charged">Charged</string>
+    <string name="Used">Used</string>
+    <string name="In_use">In_use</string>
+    <string name="Charging">Charging</string>
+    <string name="New">New</string>
+    <string name="Depleted">Depleted</string>
+    <string name="Stored">Stored</string>
 </resources>

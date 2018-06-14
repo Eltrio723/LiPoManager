@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="017" />
+
+    <TextView
+        android:id="@+id/textView_State"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_Voltage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Charged" />
+
+    <TextView
+        android:id="@+id/textView_Voltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_V"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="4.2" />
+
+    <TextView
+        android:id="@+id/textView_mAh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/mAh"
+        app:layout_constraintEnd_toStartOf="@+id/textView_Discharge"
+        app:layout_constraintTop_toBottomOf="@+id/textView_State" />
+
+    <TextView
+        android:id="@+id/textView_V"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/V"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/button_Use"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_Capacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_mAh"
+        app:layout_constraintTop_toBottomOf="@+id/textView_State"
+        tools:text="720" />
+
+    <Button
+        android:id="@+id/button_Use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Use"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_Charge"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_Charge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Charge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_Discharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_C"
+        app:layout_constraintTop_toBottomOf="@+id/textView_State"
+        tools:text="25" />
+
+    <TextView
+        android:id="@+id/textView_C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/C"
+        app:layout_constraintEnd_toStartOf="@+id/textView_Cells"
+        app:layout_constraintTop_toBottomOf="@+id/textView_State" />
+
+    <TextView
+        android:id="@+id/textView_Cells"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_S"
+        app:layout_constraintTop_toBottomOf="@+id/textView_State"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/textView_S"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/S"
+        app:layout_constraintEnd_toStartOf="@+id/button_Use"
+        app:layout_constraintTop_toBottomOf="@+id/textView_State" />
+
+</android.support.constraint.ConstraintLayout>

@@ -9,11 +9,17 @@ import java.util.Date;
 
 public class Battery {
 
+    static double minCellVoltage = 3.6;
+    static double maxCellVoltage = 4.2;
+    static double storageCellVoltage = 3.8;
+
+
     int id;
     int capacity;
     int discharge;
     int cells;
-    float voltage;
+    double voltage;
+    double currentVoltage;
     String brand;
     Date buyDate;
     int timesUsed;
@@ -31,6 +37,7 @@ public class Battery {
         discharge = 0;
         cells = 0;
         voltage = 0;
+        currentVoltage = 0;
         brand = "";
         buyDate = new Date();
         timesUsed = 0;
@@ -42,12 +49,13 @@ public class Battery {
         connector = Connector.XT60;
     }
 
-    public Battery(int capacity, int discharge, int cells, String brand, Connector connector){
-        id = 0;
+    public Battery(int id, int capacity, int discharge, int cells, String brand, Connector connector){
+        this.id = id;
         this.capacity = capacity;
         this.discharge = discharge;
         this.cells = cells;
-        voltage = (float)(cells*3.7);
+        voltage = cells*3.7;
+        currentVoltage = voltage;
         this.brand = brand;
         buyDate = Calendar.getInstance().getTime();
         timesUsed = 0;
@@ -69,7 +77,9 @@ public class Battery {
 
     int getCells() { return cells; }
 
-    float getVoltage() { return voltage; }
+    double getVoltage() { return voltage; }
+
+    double getCurrentVoltage() { return currentVoltage; }
 
     String getBrand() { return brand; }
 
@@ -98,7 +108,9 @@ public class Battery {
 
     void setCells(int cells) { this.cells = cells; }
 
-    void setVoltage(float voltage) { this.voltage = voltage; }
+    void setVoltage(double voltage) { this.voltage = voltage; }
+
+    void setCurrentVoltage(double currentVoltage) { this.currentVoltage = currentVoltage; }
 
     void setBrand(String brand) { this.brand = brand; }
 
@@ -118,5 +130,76 @@ public class Battery {
 
     void setConnector(Connector connector) { this.connector = connector; }
 
-    
+
+    double getDepletedVoltage(){
+        return cells*minCellVoltage;
+    }
+
+    double getChargedVoltage(){
+        return cells*maxCellVoltage;
+    }
+
+    double getStorageVoltage(){
+        return cells*storageCellVoltage;
+    }
+
+    void increaseTimesUsed(){
+        timesUsed++;
+    }
+
+    Boolean isCharged(){
+        return state == State.CHARGED;
+    }
+
+
+    Boolean startUse() {
+        if (state == State.CHARGED || state == State.USED){
+            state = State.IN_USE;
+            return true;
+        }
+        return false;
+    }
+
+    Boolean endUse() {
+        if (state == State.IN_USE){
+            setCurrentVoltage(getDepletedVoltage());
+            state = State.DEPLETED;
+            increaseTimesUsed();
+            return true;
+        }
+        return false;
+    }
+
+    Boolean endUse(double currVolt) {
+        if (state == State.IN_USE){
+            setCurrentVoltage(currVolt);
+            if(currVolt<=getDepletedVoltage()) {
+                state = State.DEPLETED;
+                increaseTimesUsed();
+            }
+            else
+                state = State.USED;
+            return true;
+        }
+        return false;
+    }
+
+    Boolean startCharge() {
+        if (state == State.DEPLETED || state == State.USED){
+            state = State.CHARGING;
+            return true;
+        }
+        return false;
+    }
+
+    Boolean endCharge() {
+        if (state == State.CHARGING){
+            setCurrentVoltage(getChargedVoltage());
+            state = State.CHARGED;
+            return true;
+        }
+        return false;
+    }
+
+
 }

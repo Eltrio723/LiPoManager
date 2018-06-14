@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LiPo Manager</string>
+    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
+    <string name="nav_header_desc">Cabecera</string>
+    <string name="action_settings">Opciones</string>
+    <string name="Charge">Cargar</string>
+    <string name="Use">Usar</string>
+    <string name="Charged">Cargada</string>
+    <string name="Used">Usada</string>
+    <string name="In_use">En uso</string>
+    <string name="Charging">Cargando</string>
+    <string name="New">Nueva</string>
+    <string name="Depleted">Gastada</string>
+    <string name="Stored">Almacenada</string>
+</resources>
