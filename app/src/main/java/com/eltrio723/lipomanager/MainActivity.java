@@ -1,5 +1,6 @@
 package com.eltrio723.lipomanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     BatteryManager batteryManager;
+    ArrayAdapter<Battery> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent addBatteryIntent = new Intent(MainActivity.this, AddBatteryActivity.class);
+                startActivity(addBatteryIntent);
             }
         });
 
@@ -56,13 +58,25 @@ public class MainActivity extends AppCompatActivity
         batteryManager.addBattery(new Battery());
         batteryManager.addBattery(new Battery());
 
-        ArrayAdapter<Battery> adapter = new BatteryArrayAdapter(this, 0,
+        refresh();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        refresh();
+    }
+
+
+    private void refresh(){
+        adapter = new BatteryArrayAdapter(this, 0,
                 (ArrayList<Battery>) batteryManager.getBatteries());
 
         ListView listView = (ListView) findViewById(R.id.ListView_Main);
         listView.setAdapter(adapter);
-
     }
+
 
     @Override
     public void onBackPressed() {

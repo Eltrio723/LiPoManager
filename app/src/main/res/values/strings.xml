@@ -19,4 +19,20 @@
     <string name="New">New</string>
     <string name="Depleted">Depleted</string>
     <string name="Stored">Stored</string>
+    <string name="Capacity">Capacity</string>
+    <string name="Discharge">Discharge</string>
+    <string name="Cells">Cells</string>
+    <string name="Advanced">Advanced options</string>
+    <string name="CurrentVoltage">Current voltage:</string>
+    <string name="TimesUsed">Times used:</string>
+    <string name="CurrentState">Current state:</string>
+    <string name="ConnectorType">Connector type:</string>
+    <string name="BuyDate">Buy date</string>
+    <string name="LastUsed">Last time used</string>
+    <string name="LastCharged">Last time charged</string>
+    <string name="Notes">Notes</string>
+    <string name="BrandName">Brand name</string>
+    <string name="AddBattery">Add Battery</string>
+    <string name="Accept">Accept</string>
+    <string name="Cancel">Cancel</string>
 </resources>

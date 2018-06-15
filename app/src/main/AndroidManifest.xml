@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddBatteryActivity"
+            android:label="@string/AddBattery"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

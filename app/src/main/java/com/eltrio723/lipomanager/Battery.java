@@ -43,10 +43,28 @@ public class Battery {
         timesUsed = 0;
         state = State.NEW;
         notes = new ArrayList<String>();
-        lastUsed = new Date();
-        lastCharged = new Date();
-        lastModified = new Date();
-        connector = Connector.XT60;
+        lastUsed = Calendar.getInstance().getTime();
+        lastCharged = Calendar.getInstance().getTime();
+        lastModified = Calendar.getInstance().getTime();
+        connector = Connector.OTHER;
+    }
+
+    public Battery(int id, int capacity, int discharge, int cells){
+        this.id = id;
+        this.capacity = capacity;
+        this.discharge = discharge;
+        this.cells = cells;
+        voltage = cells*3.7;
+        currentVoltage = voltage;
+        this.brand = "";
+        buyDate = Calendar.getInstance().getTime();
+        timesUsed = 0;
+        state = State.NEW;
+        notes = new ArrayList<String>();
+        lastUsed = Calendar.getInstance().getTime();
+        lastCharged = Calendar.getInstance().getTime();
+        lastModified = Calendar.getInstance().getTime();
+        this.connector = Connector.OTHER;
     }
 
     public Battery(int id, int capacity, int discharge, int cells, String brand, Connector connector){
@@ -61,12 +79,29 @@ public class Battery {
         timesUsed = 0;
         state = State.NEW;
         notes = new ArrayList<String>();
-        lastUsed = new Date();
-        lastCharged = new Date();
+        lastUsed = Calendar.getInstance().getTime();
+        lastCharged = Calendar.getInstance().getTime();
         lastModified = Calendar.getInstance().getTime();
         this.connector = connector;
     }
 
+    public Battery(int id, int capacity, int discharge, int cells, double currentVoltage, int timesUsed, String brand, State state, Connector connector, Date buyDate, Date lastUsed, Date lastCharged){
+        this.id = id;
+        this.capacity = capacity;
+        this.discharge = discharge;
+        this.cells = cells;
+        voltage = cells*3.7;
+        this.currentVoltage = currentVoltage;
+        this.brand = brand;
+        this.buyDate = buyDate;
+        this.timesUsed = timesUsed;
+        this.state = state;
+        notes = new ArrayList<String>();
+        this.lastUsed = lastUsed;
+        this.lastCharged = lastCharged;
+        lastModified = Calendar.getInstance().getTime();
+        this.connector = connector;
+    }
 
 
     int getId() { return id; }

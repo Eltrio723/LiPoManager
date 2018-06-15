@@ -14,4 +14,20 @@
     <string name="New">Nueva</string>
     <string name="Depleted">Gastada</string>
     <string name="Stored">Almacenada</string>
+    <string name="Capacity">Capacidad</string>
+    <string name="Discharge">Descarga</string>
+    <string name="Cells">Celdas</string>
+    <string name="Advanced">Opciones avanzadas</string>
+    <string name="CurrentVoltage">Voltaje actual</string>
+    <string name="TimesUsed">Veces usada</string>
+    <string name="CurrentState">Estado actual</string>
+    <string name="ConnectorType">Tipo de conector</string>
+    <string name="BuyDate">Fecha de compra</string>
+    <string name="LastUsed">Última vez usada</string>
+    <string name="LastCharged">Última vez cargada</string>
+    <string name="Notes">Notas</string>
+    <string name="BrandName">Marca</string>
+    <string name="AddBattery">Añadir batería</string>
+    <string name="Accept">Aceptar</string>
+    <string name="Cancel">Cancelar</string>
 </resources>
