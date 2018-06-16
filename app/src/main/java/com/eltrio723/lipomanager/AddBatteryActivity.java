@@ -125,14 +125,19 @@ public class AddBatteryActivity extends AppCompatActivity {
                 if(isAdvanced){
                     Battery battery = createCompleteBattery();
 
-                    BatteryManager.getInstance().addBattery(battery);
-                    finish();
+                    if(battery!=null){
+                        BatteryManager.getInstance().addBattery(battery);
+                        finish();
+                    }
+
                 }
                 else {
                     Battery battery = createBasicBattery();
+                    if(battery!=null){
+                        BatteryManager.getInstance().addBattery(battery);
+                        finish();
+                    }
 
-                    BatteryManager.getInstance().addBattery(battery);
-                    finish();
                 }
             }
         });
@@ -145,15 +150,25 @@ public class AddBatteryActivity extends AppCompatActivity {
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                final String selectedDate = twoDigits(day) + " / " + twoDigits(month+1) + " / " + year;
                 et.setText(selectedDate);
             }
         });
         newFragment.show(getFragmentManager(), "datePicker");
     }
 
+    private String twoDigits(int n){
+        return (n<9) ? ("0"+n) : String.valueOf(n);
+    }
+
 
     private Battery createBasicBattery(){
+
+        if(textId.getText().toString().isEmpty() || textCapacity.getText().toString().isEmpty() ||
+                textDischarge.getText().toString().isEmpty() || textCells.getText().toString().isEmpty()){
+            return null;
+        }
+
         int id = Integer.parseInt(textId.getText().toString());
         int capacity = Integer.parseInt(textCapacity.getText().toString());
         int discharge = Integer.parseInt(textDischarge.getText().toString());
@@ -163,6 +178,14 @@ public class AddBatteryActivity extends AppCompatActivity {
     }
 
     private Battery createCompleteBattery(){
+
+        if(textId.getText().toString().isEmpty() || textCapacity.getText().toString().isEmpty() ||
+                textDischarge.getText().toString().isEmpty() || textCells.getText().toString().isEmpty() ||
+                textBrand.getText().toString().isEmpty() || textCurrentVoltage.getText().toString().isEmpty()
+                || textTimesUsed.getText().toString().isEmpty()){
+            return null;
+        }
+
         int id = Integer.parseInt(textId.getText().toString());
         int capacity = Integer.parseInt(textCapacity.getText().toString());
         int discharge = Integer.parseInt(textDischarge.getText().toString());
@@ -175,7 +198,7 @@ public class AddBatteryActivity extends AppCompatActivity {
         State state = (State) statesSpinner.getSelectedItem();
         Connector connector = (Connector) connectorsSpinner.getSelectedItem();
 
-        SimpleDateFormat formatter = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date buyDate, lastUsed, lastCharged;
         try {
             buyDate = formatter.parse(textBuyDate.getText().toString());

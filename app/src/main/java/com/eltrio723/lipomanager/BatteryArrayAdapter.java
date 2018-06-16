@@ -24,6 +24,7 @@ public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
     }
 
 
+
     public View getView(int position, View convertView, ViewGroup parent){
         Battery battery = batteries.get(position);
 

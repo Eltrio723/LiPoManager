@@ -22,9 +22,18 @@
         <activity
             android:name=".AddBatteryActivity"
             android:label="@string/AddBattery"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ViewBatteryActivity"
+            android:label="@string/Details"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/About"
+            android:parentActivityName=".AboutActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

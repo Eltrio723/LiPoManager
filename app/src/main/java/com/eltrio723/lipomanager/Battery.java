@@ -188,7 +188,7 @@ public class Battery {
 
 
     Boolean startUse() {
-        if (state == State.CHARGED || state == State.USED){
+        if (state != State.DEPLETED){
             state = State.IN_USE;
             return true;
         }
@@ -200,6 +200,7 @@ public class Battery {
             setCurrentVoltage(getDepletedVoltage());
             state = State.DEPLETED;
             increaseTimesUsed();
+            setLastUsed(Calendar.getInstance().getTime());
             return true;
         }
         return false;
@@ -211,6 +212,7 @@ public class Battery {
             if(currVolt<=getDepletedVoltage()) {
                 state = State.DEPLETED;
                 increaseTimesUsed();
+                setLastUsed(Calendar.getInstance().getTime());
             }
             else
                 state = State.USED;
@@ -220,7 +222,7 @@ public class Battery {
     }
 
     Boolean startCharge() {
-        if (state == State.DEPLETED || state == State.USED){
+        if (state != State.CHARGING && state != State.CHARGED){
             state = State.CHARGING;
             return true;
         }
@@ -231,10 +233,24 @@ public class Battery {
         if (state == State.CHARGING){
             setCurrentVoltage(getChargedVoltage());
             state = State.CHARGED;
+            setLastCharged(Calendar.getInstance().getTime());
             return true;
         }
         return false;
     }
 
+
+    void addNote(String s){
+        notes.add(s);
+    }
+
+    void store(double cv){
+        currentVoltage = cv;
+        setState(State.STORED);
+    }
+
+    void deleteNote(int p){
+        notes.remove(p);
+    }
 
 }

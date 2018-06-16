@@ -30,4 +30,7 @@
     <string name="AddBattery">Añadir batería</string>
     <string name="Accept">Aceptar</string>
     <string name="Cancel">Cancelar</string>
+    <string name="EndCharge">Fin carga</string>
+    <string name="StopUsing">Fin uso</string>
+    <string name="Details">Detalles</string>
 </resources>

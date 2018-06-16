@@ -7,7 +7,8 @@ public enum State {
     IN_USE ("In use"),
     NEW ("New"),
     STORED ("Stored"),
-    DEPLETED ("Depleted");
+    DEPLETED ("Depleted"),
+    OTHER ("Other");
 
     private final String name;
 

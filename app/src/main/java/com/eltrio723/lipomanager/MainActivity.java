@@ -13,16 +13,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public final static String EXTRA_MESSAGE = "com.eltrio723.lipomanager.MESSAGE";
+
     BatteryManager batteryManager;
     ArrayAdapter<Battery> adapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +60,21 @@ public class MainActivity extends AppCompatActivity
 
         batteryManager = BatteryManager.getInstance();
         batteryManager.init(this);
-        batteryManager.clear();
-        batteryManager.addBattery(new Battery());
-        batteryManager.addBattery(new Battery());
-        batteryManager.addBattery(new Battery());
-        batteryManager.addBattery(new Battery());
+
+        listView = (ListView) findViewById(R.id.ListView_Main);
 
         refresh();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, ViewBatteryActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, i);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
@@ -72,10 +88,10 @@ public class MainActivity extends AppCompatActivity
     private void refresh(){
         adapter = new BatteryArrayAdapter(this, 0,
                 (ArrayList<Battery>) batteryManager.getBatteries());
-
-        ListView listView = (ListView) findViewById(R.id.ListView_Main);
         listView.setAdapter(adapter);
+
     }
+
 
 
     @Override
@@ -88,27 +104,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -116,18 +111,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_about) {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

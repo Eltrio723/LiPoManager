@@ -6,6 +6,7 @@
     <string name="nav_header_subtitle" translatable="false">https://github.com/Eltrio723</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="Delete">Delete</string>
     <string name="V" translatable="false">V</string>
     <string name="C" translatable="false">C</string>
     <string name="S" translatable="false">S</string>
@@ -35,4 +36,32 @@
     <string name="AddBattery">Add Battery</string>
     <string name="Accept">Accept</string>
     <string name="Cancel">Cancel</string>
+    <string name="EndCharge">End charge</string>
+    <string name="EndUse">End use</string>
+    <string name="StopUsing">Stop using</string>
+    <string name="Details">Details</string>
+    <string name="AddNote">Add note</string>
+    <string name="TypeNote">Type note</string>
+    <string name="GeneralView">General view</string>
+    <string name="About">About</string>
+    <string name="DeleteBatteryAsk">Delete battery?</string>
+    <string name="Store">Store</string>
+
+    <string name="delete_message">Do you really want to delete this battery?
+        This action cannot be undone.</string>
+    <string name="delete_title">Delete battery</string>
+
+    <string name="delete_note_message">Do you really want to delete this note?
+        This action cannot be undone.</string>
+    <string name="delete_note_title">Delete note</string>
+
+    <string name="store_message">Input your storage voltage.</string>
+    <string name="store_title">Store battery</string>
+
+    <string name="used_message">Input your current voltage.</string>
+    <string name="used_title">Battery used</string>
+
+    <string name="developer_name" translatable="false">Antonio Jiménez Amador</string>
+    <string name="github_page" translatable="false">https://github.com/Eltrio723</string>
+    <string name="official_email" translatable="false">jimenezaman@correo.ugr.es</string>
 </resources>

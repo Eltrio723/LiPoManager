@@ -54,6 +54,29 @@ class BatteryManager {
         batteries.clear();
     }
 
+    Battery getBatteryById(int id){
+        for (Battery bat : batteries){
+            if(bat.getId()==id){
+                return bat;
+            }
+        }
+        return null;
+    }
+
+    Battery getBatteryByIndex(int index){
+        return batteries.get(index);
+    }
+
+
+    void storeBattery(Battery bat, String currVolt){
+        double currentVoltage;
+        if(!currVolt.isEmpty())
+            currentVoltage = Double.parseDouble(currVolt);
+        else
+            currentVoltage = 3.8*bat.getCells();
+        bat.store(currentVoltage);
+    }
+
 
     void storeData(){
         SharedPreferences sPrefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -88,6 +111,43 @@ class BatteryManager {
         return count;
     }
 
+    void startCharge(Battery bat){
+        if(bat!=null)
+            bat.startCharge();
+    }
+
+    void endCharge(Battery bat){
+        if(bat!=null)
+            bat.endCharge();
+    }
+
+    void startUse(Battery bat){
+        if(bat!=null)
+            bat.startUse();
+    }
+
+    void endUse(Battery bat){
+        if(bat!=null)
+            bat.endUse();
+    }
+
+    void endUse(Battery bat, String s){
+        double currentVoltage;
+        if(bat!=null){
+            if(!s.isEmpty())
+                currentVoltage = Double.parseDouble(s);
+            else
+                currentVoltage = 4.2*bat.getCells();
+            bat.endUse(currentVoltage);
+        }
+
+    }
+
+    State getState(Battery bat){
+        if(bat!=null)
+            return bat.getState();
+        return State.OTHER;
+    }
 
 
 }
