@@ -220,8 +220,6 @@ public class AddBatteryActivity extends AppCompatActivity {
         }
 
 
-        Calendar.getInstance().getTime();
-
 
         return new Battery(id, capacity, discharge, cells, currentVoltage, timesUsed, brand, state, connector, buyDate, lastUsed, lastCharged);
     }

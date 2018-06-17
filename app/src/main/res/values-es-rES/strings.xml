@@ -33,4 +33,20 @@
     <string name="EndCharge">Fin carga</string>
     <string name="StopUsing">Fin uso</string>
     <string name="Details">Detalles</string>
+    <string name="Delete">Borrar</string>
+    <string name="EndUse">Fin uso</string>
+    <string name="AddNote">Añadir nota</string>
+    <string name="TypeNote">Escriba la nota</string>
+    <string name="GeneralView">General</string>
+    <string name="About">Info</string>
+    <string name="DeleteBatteryAsk">¿Borrar batería?</string>
+    <string name="Store">Almacenar</string>
+    <string name="delete_message">¿Seguro que quiere borrar esta batería? Esta acción no puede deshacerse.</string>
+    <string name="delete_title">Borrar batería</string>
+    <string name="delete_note_message">¿Seguro que quiere borrar esta nota? Esta acción no puede deshacerse.</string>
+    <string name="delete_note_title">Borrar nota</string>
+    <string name="store_message">Introduzca el voltaje de almacenamiento</string>
+    <string name="store_title">Almacenar batería</string>
+    <string name="used_message">Introduzca el voltaje actual</string>
+    <string name="used_title">Batería usada</string>
 </resources>
