@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity
 
         listView = (ListView) findViewById(R.id.ListView_Main);
 
-        refresh();
+        adapter = new BatteryArrayAdapter(this, 0,
+                (ArrayList<Battery>) batteryManager.getBatteryList());
+        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -86,10 +88,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private void refresh(){
-        adapter = new BatteryArrayAdapter(this, 0,
-                (ArrayList<Battery>) batteryManager.getBatteries());
-        listView.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
     }
 
 

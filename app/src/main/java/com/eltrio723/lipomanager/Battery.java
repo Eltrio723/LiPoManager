@@ -1,33 +1,76 @@
 package com.eltrio723.lipomanager;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+@Entity(tableName = "batteries")
 public class Battery {
 
     static double minCellVoltage = 3.6;
     static double maxCellVoltage = 4.2;
     static double storageCellVoltage = 3.8;
 
-
+    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     int id;
+
+    @ColumnInfo(name = "capacity")
     int capacity;
+
+    @ColumnInfo(name = "discharge")
     int discharge;
+
+    @ColumnInfo(name = "cells")
     int cells;
+
+    @ColumnInfo(name = "voltage")
     double voltage;
+
+    @ColumnInfo(name = "currentVoltage")
     double currentVoltage;
+
+    @ColumnInfo(name = "brand")
     String brand;
+
+    @ColumnInfo(name = "buyDate")
+    @TypeConverters(DatesConverters.class)
     Date buyDate;
+
+    @ColumnInfo(name = "timesUsed")
     int timesUsed;
+
+    @ColumnInfo(name = "state")
+    @TypeConverters(StatesConverters.class)
     State state;
+
+    @ColumnInfo(name = "notes")
+    @TypeConverters(StringListsConverters.class)
     ArrayList<String> notes;
+
+    @ColumnInfo(name = "lastUsed")
+    @TypeConverters(DatesConverters.class)
     Date lastUsed;
+
+    @ColumnInfo(name = "lastCharged")
+    @TypeConverters(DatesConverters.class)
     Date lastCharged;
+
+    @ColumnInfo(name = "lastModified")
+    @TypeConverters(DatesConverters.class)
     Date lastModified;
+
+    @ColumnInfo(name = "connector")
+    @TypeConverters(ConnectorsConverters.class)
     Connector connector;
 
 
@@ -104,66 +147,66 @@ public class Battery {
     }
 
 
-    int getId() { return id; }
+    public int getId() { return id; }
 
-    int getCapacity() { return capacity; }
+    public int getCapacity() { return capacity; }
 
-    int getDischarge() { return discharge; }
+    public int getDischarge() { return discharge; }
 
-    int getCells() { return cells; }
+    public int getCells() { return cells; }
 
-    double getVoltage() { return voltage; }
+    public double getVoltage() { return voltage; }
 
-    double getCurrentVoltage() { return currentVoltage; }
+    public double getCurrentVoltage() { return currentVoltage; }
 
-    String getBrand() { return brand; }
+    public String getBrand() { return brand; }
 
-    Date getBuyDate() { return buyDate; }
+    public Date getBuyDate() { return buyDate; }
 
-    int getTimesUsed() { return timesUsed; }
+    public int getTimesUsed() { return timesUsed; }
 
-    State getState() { return state; }
+    public State getState() { return state; }
 
-    ArrayList<String> getNotes() { return notes; }
+    public ArrayList<String> getNotes() { return notes; }
 
-    Date getLastUsed() { return lastUsed; }
+    public Date getLastUsed() { return lastUsed; }
 
-    Date getLastCharged() { return lastCharged; }
+    public Date getLastCharged() { return lastCharged; }
 
-    Date getLastModified() { return lastModified; }
+    public Date getLastModified() { return lastModified; }
 
-    Connector getConnector() { return connector; }
+    public Connector getConnector() { return connector; }
 
 
-    void setId(int id){ this.id = id; }
+    public void setId(int id){ this.id = id; }
 
-    void setCapacity(int capacity) { this.capacity = capacity; }
+    public void setCapacity(int capacity) { this.capacity = capacity; }
 
-    void setDischarge(int discharge) { this.discharge = discharge; }
+    public void setDischarge(int discharge) { this.discharge = discharge; }
 
-    void setCells(int cells) { this.cells = cells; }
+    public void setCells(int cells) { this.cells = cells; }
 
-    void setVoltage(double voltage) { this.voltage = voltage; }
+    public void setVoltage(double voltage) { this.voltage = voltage; }
 
-    void setCurrentVoltage(double currentVoltage) { this.currentVoltage = currentVoltage; }
+    public void setCurrentVoltage(double currentVoltage) { this.currentVoltage = currentVoltage; }
 
-    void setBrand(String brand) { this.brand = brand; }
+    public void setBrand(String brand) { this.brand = brand; }
 
-    void setBuyDate(Date buyDate) { this.buyDate = buyDate; }
+    public void setBuyDate(Date buyDate) { this.buyDate = buyDate; }
 
-    void setTimesUsed(int timesUsed) { this.timesUsed = timesUsed; }
+    public void setTimesUsed(int timesUsed) { this.timesUsed = timesUsed; }
 
-    void setState(State state) { this.state = state; }
+    public void setState(State state) { this.state = state; }
 
-    void setNotes(ArrayList<String> notes) { this.notes = notes; }
+    public void setNotes(ArrayList<String> notes) { this.notes = notes; }
 
-    void setLastUsed(Date lastUsed) { this.lastUsed = lastUsed; }
+    public void setLastUsed(Date lastUsed) { this.lastUsed = lastUsed; }
 
-    void setLastCharged(Date lastCharged) { this.lastCharged = lastCharged; }
+    public void setLastCharged(Date lastCharged) { this.lastCharged = lastCharged; }
 
-    void setLastModified(Date lastModified) { this.lastModified = lastModified; }
+    public void setLastModified(Date lastModified) { this.lastModified = lastModified; }
 
-    void setConnector(Connector connector) { this.connector = connector; }
+    public void setConnector(Connector connector) { this.connector = connector; }
 
 
     double getDepletedVoltage(){

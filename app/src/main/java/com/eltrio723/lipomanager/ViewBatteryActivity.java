@@ -6,7 +6,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ViewBatteryActivity extends AppCompatActivity {
 
@@ -163,7 +161,7 @@ public class ViewBatteryActivity extends AppCompatActivity {
     }
 
     void updateData(){
-        BatteryManager.getInstance().storeData();
+        BatteryManager.getInstance().updateBattery(battery);
         updateButtons();
         refresh();
     }
@@ -209,7 +207,7 @@ public class ViewBatteryActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.Delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                BatteryManager.getInstance().removeBattery(battery);
+                BatteryManager.getInstance().deleteBattery(battery);
                 finish();
             }
         });
